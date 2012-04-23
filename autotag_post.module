@@ -32,9 +32,13 @@ function autotag_post_block($op = 'list', $delta = 0, $edit = array()) {
 			$tids[] = $term->tid;
 		}
 		$node_select = taxonomy_select_nodes($tids, 'and');
-		while ($node = db_fetch_object($node_select)) {
-			if ($node->nid != $parent_node->nid) {
-				$content .= "<li>" . l($node->title, 'node/' . $node->nid) . "</li>";
+		while ($tax_node = db_fetch_object($node_select)) {
+			if ($tax_node->nid != $parent_node->nid) {
+				// the query doesn't select the entire node so we need to load it 
+				// to get the teaser, etc
+				$node = node_load($tax_node->nid);
+				$content .= "<li>" . l($node->title, 'node/' . $node->nid) . "<br />";
+				$content .= $node->teaser . "</li>";
 			}
 		}
 		$content .= "</ul>";
