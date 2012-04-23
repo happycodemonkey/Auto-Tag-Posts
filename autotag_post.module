@@ -37,6 +37,7 @@ function autotag_post_block($op = 'list', $delta = 0, $edit = array()) {
 				$content .= "<li>" . l($node->title, 'node/' . $node->nid) . "</li>";
 			}
 		}
+
 		$content .= "</ul>";
 
 		// don't show this link if the url is not "node/$nid"
