@@ -5,3 +5,4 @@ This module allows users to create posts from a node block that will be auto-tag
 2) Allow the admin to specify more than one content type for the post, and present the user with a limited drop-down.
 3) Don't display the block when it's not on a node at all. Not useful unless there's an NID.
 4) Make sure the content types being tagged have tagging enabled!!!
+5) Add teasers
